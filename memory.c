@@ -8,6 +8,7 @@
 #include <linux/mm_types.h>
 #include <linux/uaccess.h>
 #include <linux/mm.h>
+#include <linux/vmalloc.h>
 #include <linux/highmem.h>
 #include <linux/slab.h>
 
@@ -162,7 +163,7 @@ static int memory_map_task(byte *addr, word *size, void **map, byte **new_addr, 
 		ERROR(-ERROR_MEM);
 	}
 
-	ret = get_user_pages(task, task->mm, start, npages, write, 0, pages, NULL);
+	ret = get_user_pages(start, npages, write, 0, pages, NULL);
 	if (ret <= 0) {
 		memory_free(pages);
 		ERROR(-ERROR_POINT);
