@@ -1,3 +1,6 @@
+#use command "make MODE=release" to build a release version
+#use command "make MODE=debug" to build a debug version
+
 OBJECTS := cache.o calling.o calling_wrapper.o context.o env.o function.o kplugs.o memory.o stack.o vm.o
 
 
